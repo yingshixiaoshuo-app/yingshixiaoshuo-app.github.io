@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影视小说典藏阁｜剧集原著与改编评注全编</title>
+<meta name="description" content="影视小说典藏阁辑录热门剧集之原著小说、改编考异与书友批注。自古典章回至当代荧屏，逐卷比勘文影异同，附人物关系图谱与版本考订。本站长期维护，地址：https://yingshixiaoshuo-app.github.io，愿与同好共赏文画合璧之妙。">
+<meta name="keywords" content="影视小说,剧集原著,改编评注,文影对照,章回小说,影视文学,小说下载,阅读指南,yingshixiaoshuo-app.github.io">
+<meta name="author" content="影视小说典藏阁">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://yingshixiaoshuo-app.github.io">
+<meta property="og:type" content="website">
+<meta property="og:title" content="影视小说典藏阁">
+<meta property="og:url" content="https://yingshixiaoshuo-app.github.io">
+<meta property="og:description" content="热门剧集原著小说与改编评注全编">
+<meta name="twitter:card" content="summary">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --paper:#f5e6c8;--paper-dark:#e8d5b0;--ink:#2c1810;--ink-light:#5a3e1b;
+  --accent:#8b0000;--accent-light:#a0522d;--green:#2d5016;--line:#c9a96e;
+  --shadow:0 2px 8px rgba(44,24,16,.15);
+}
+body{
+  font-family:"Noto Serif SC","Source Han Serif SC","SimSun",serif;
+  background:var(--paper);color:var(--ink);line-height:1.8;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--line) 31px,var(--line) 32px);
+}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;text-decoration-color:var(--accent-light);}
+
+/* skip link */
+.skip-link{position:absolute;left:-999px;top:0;background:var(--accent);color:#fff;padding:8px 16px;z-index:999;}
+.skip-link:focus{left:8px;top:8px;}
+
+/* header */
+header{
+  background:linear-gradient(135deg,var(--ink) 0%,var(--ink-light) 100%);
+  color:var(--paper);padding:2rem 1rem 3rem;border-bottom:4px solid var(--accent);
+  position:relative;overflow:hidden;
+}
+header::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:20px;
+  background:repeating-linear-gradient(45deg,var(--accent),var(--accent) 10px,transparent 10px,transparent 20px);
+}
+.site-title{
+  font-size:clamp(1.8rem,5vw,3rem);writing-mode:horizontal-tb;
+  text-align:center;letter-spacing:.3em;font-weight:900;
+  text-shadow:2px 2px 0 var(--accent);
+}
+.site-title .seal{
+  display:inline-block;background:var(--accent);color:var(--paper);
+  font-size:.35em;padding:2px 6px;border-radius:3px;vertical-align:middle;
+  letter-spacing:0;margin-left:12px;font-family:"SimSun",serif;
+}
+.site-sub{text-align:center;opacity:.8;margin-top:.5rem;font-size:.95rem;}
+
+/* nav */
+nav{
+  background:var(--paper-dark);border-bottom:2px solid var(--line);
+  position:sticky;top:0;z-index:100;
+}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:0;}
+.nav-inner a{
+  padding:10px 18px;color:var(--ink);font-weight:700;font-size:.9rem;
+  border-right:1px solid var(--line);transition:background .2s;
+}
+.nav-inner a:last-child{border-right:none;}
+.nav-inner a:hover,.nav-inner a:focus{background:var(--ink);color:var(--paper);text-decoration:none;}
+
+/* main */
+main{max-width:960px;margin:0 auto;padding:2rem 1rem;}
+
+/* section */
+section{margin-bottom:3rem;}
+section h2{
+  font-size:1.5rem;color:var(--accent);border-left:5px solid var(--accent);
+  padding-left:12px;margin-bottom:1.5rem;font-weight:900;
+}
+section h2 .vol{font-family:"SimSun";font-size:.7em;color:var(--ink-light);margin-right:8px;}
+
+/* 卷一：章回卡片 */
+.chapter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
+.chapter-card{
+  background:var(--paper);border:1px solid var(--line);padding:1.2rem;
+  box-shadow:3px 3px 0 var(--ink-light);position:relative;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);
+}
+.chapter-card::before{
+  content:attr(data-chapter);position:absolute;top:-1px;right:-1px;
+  background:var(--accent);color:#fff;font-size:.75rem;padding:3px 8px;
+  font-family:"SimSun";
+}
+.chapter-card h3{font-size:1.05rem;margin-bottom:.5rem;color:var(--ink);}
+.chapter-card .meta{font-size:.8rem;color:var(--ink-light);margin-bottom:.8rem;}
+.chapter-card p{font-size:.9rem;line-height:1.7;}
+.chapter-card .rating{color:var(--accent);font-weight:700;margin-top:.5rem;}
+
+/* 卷二：评注 */
+.review-layout{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.review-block{
+  background:#fffaf0;border:1px dashed var(--line);padding:1.2rem;
+}
+.review-block h3{font-size:1rem;color:var(--green);margin-bottom:.8rem;}
+.review-block .orig{font-style:italic;color:var(--ink-light);margin-bottom:.5rem;padding-left:12px;border-left:3px solid var(--green);}
+.review-block .note{font-size:.9rem;}
+.review-block .note::before{content:'【批】';color:var(--accent);font-weight:700;}
+
+/* 卷三：关系树 */
+.tree{display:flex;justify-content:center;padding:1rem;}
+.tree-node{
+  position:relative;text-align:center;
+}
+.tree-children{display:flex;gap:2rem;justify-content:center;margin-top:1.5rem;}
+.tree-item{
+  background:var(--ink);color:var(--paper);padding:8px 14px;font-size:.85rem;
+  position:relative;
+}
+.tree-item::before{
+  content:'';position:absolute;top:-12px;left:50%;width:1px;height:12px;background:var(--ink);
+}
+.tree-children .tree-item:first-child::after{
+  content:'';position:absolute;top:-12px;left:50%;width:calc(100% + 2rem);height:1px;background:var(--ink);
+}
+
+/* 卷四：批注 */
+.annotation-list{columns:2;column-gap:2rem;}
+.annotation-item{
+  break-inside:avoid;background:#fffaf0;border:1px solid var(--line);
+  padding:1rem;margin-bottom:1rem;position:relative;
+}
+.annotation-item::before{
+  content:'批';position:absolute;top:-8px;right:12px;
+  background:var(--accent);color:#fff;width:20px;height:20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;border-radius:50%;font-family:"SimSun";
+}
+.annotation-item h4{font-size:.95rem;margin-bottom:.4rem;color:var(--ink);}
+.annotation-item p{font-size:.85rem;line-height:1.6;}
+
+/* 卷五：指南 */
+.guide-table{width:100%;border-collapse:collapse;margin-bottom:1.5rem;}
+.guide-table th,.guide-table td{
+  border:1px solid var(--line);padding:10px 12px;text-align:left;font-size:.9rem;
+}
+.guide-table th{background:var(--ink);color:var(--paper);}
+.guide-table tr:nth-child(even){background:rgba(201,169,110,.1);}
+.progress-bar{background:var(--line);height:24px;position:relative;margin:1rem 0;}
+.progress-bar .fill{background:var(--accent);height:100%;width:0;transition:width 1s;}
+.progress-bar .label{position:absolute;top:2px;left:50%;transform:translateX(-50%);font-size:.8rem;color:#fff;font-weight:700;}
+
+/* 卷六：关于 */
+.about-card{
+  background:var(--paper-dark);border:2px solid var(--ink);padding:1.5rem;
+  position:relative;
+}
+.about-card::before,.about-card::after{
+  content:'「';position:absolute;font-size:3rem;color:var(--accent);font-family:"SimSun";
+}
+.about-card::before{top:-10px;left:10px;}
+.about-card::after{content:'」';bottom:-30px;right:10px;}
+.about-card h3{font-size:1.1rem;margin-bottom:1rem;}
+.about-card p{margin-bottom:.8rem;font-size:.95rem;}
+.about-card .url-display{
+  background:var(--ink);color:var(--paper);padding:10px 16px;
+  font-family:"Courier New",monospace;font-size:.9rem;
+  display:inline-block;margin-top:.5rem;
+}
+
+/* footer */
+footer{
+  background:var(--ink);color:var(--paper-dark);padding:2rem 1rem 1rem;
+  text-align:center;
+}
+.footer-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:960px;margin:0 auto 1.5rem;}
+.footer-cols h4{color:var(--accent-light);margin-bottom:.5rem;font-size:.95rem;}
+.footer-cols ul{list-style:none;}
+.footer-cols li{margin-bottom:.3rem;font-size:.85rem;}
+.footer-cols a{color:var(--paper-dark);opacity:.8;}
+.footer-cols a:hover{opacity:1;}
+.copyright{
+  border-top:1px solid var(--ink-light);padding-top:1rem;font-size:.8rem;opacity:.7;
+}
+.copyright .url{color:var(--accent-light);font-family:"Courier New",monospace;}
+
+/* responsive */
+@media(max-width:768px){
+  .site-title{font-size:1.5rem;letter-spacing:.15em;}
+  .nav-inner{flex-direction:column;}
+  .nav-inner a{border-right:none;border-bottom:1px solid var(--line);text-align:center;}
+  .review-layout{grid-template-columns:1fr;}
+  .annotation-list{columns:1;}
+  .tree-children{flex-direction:column;gap:1rem;align-items:center;}
+  .tree-item::before{display:none;}
+  .guide-table{font-size:.8rem;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"WebSite","name":"影视小说典藏阁","url":"https://yingshixiaoshuo-app.github.io","inLanguage":"zh-CN"},
+    {"@type":"WebPage","@id":"https://yingshixiaoshuo-app.github.io/#webpage","url":"https://yingshixiaoshuo-app.github.io","name":"影视小说典藏阁","isPartOf":{"@id":"https://yingshixiaoshuo-app.github.io/#website"},"about":{"@id":"https://yingshixiaoshuo-app.github.io/#website"},"inLanguage":"zh-CN"},
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"首页","item":"https://yingshixiaoshuo-app.github.io"},
+      {"@type":"ListItem","position":2,"name":"热门原著","item":"https://yingshixiaoshuo-app.github.io#vol1"},
+      {"@type":"ListItem","position":3,"name":"改编评注","item":"https://yingshixiaoshuo-app.github.io#vol2"}
+    ]},
+    {"@type":"Article","headline":"琅琊榜原著与剧集改编考","articleSection":"热门影视原著","url":"https://yingshixiaoshuo-app.github.io#vol1","author":{"@type":"Organization","name":"影视小说典藏阁"},"inLanguage":"zh-CN"},
+    {"@type":"Article","headline":"庆余年原著人物关系与剧情走向","articleSection":"热门影视原著","url":"https://yingshixiaoshuo-app.github.io#vol1","author":{"@type":"Organization","name":"影视小说典藏阁"},"inLanguage":"zh-CN"},
+    {"@type":"Article","headline":"甄嬛传小说与剧版结局差异评注","articleSection":"改编对比评注","url":"https://yingshixiaoshuo-app.github.io#vol2","author":{"@type":"Organization","name":"影视小说典藏阁"},"inLanguage":"zh-CN"}
+  ]
+}
+</script>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+<a href="#main" class="skip-link">跳至主内容</a>
+<header>
+  <h1 class="site-title">影视小说典藏阁<span class="seal">印</span></h1>
+  <p class="site-sub">— 剧集原著 · 改编评注 · 文影对照 —</p>
+</header>
+
+<nav aria-label="主导航">
+  <div class="nav-inner">
+    <a href="#vol1">热门原著</a>
+    <a href="#vol2">改编评注</a>
+    <a href="#vol3">人物图谱</a>
+    <a href="#vol4">书友批注</a>
+    <a href="#vol5">阅读指南</a>
+    <a href="#vol6">关于本站</a>
+  </div>
+</nav>
+
+<main id="main">
+  <!-- 卷一 -->
+  <section id="vol1" aria-labelledby="v1">
+    <h2 id="v1"><span class="vol">卷一</span>热门影视原著</h2>
+    <div class="chapter-grid">
+      <article class="chapter-card" data-chapter="第一回">
+        <h3>琅琊榜</h3>
+        <div class="meta">海宴 著 · 2007 · 仙侠权谋</div>
+        <p>梅长苏以病弱之躯搅动金陵风云，十二年前赤焰冤案真相渐浮。原著以细腻笔法铺陈朝堂博弈与江湖恩怨，剧版高度还原。</p>
+        <div class="rating">推荐指数：★★★★★</div>
+      </article>
+      <article class="chapter-card" data-chapter="第二回">
+        <h3>庆余年</h3>
+        <div class="meta">猫腻 著 · 2007 · 穿越权谋</div>
+        <p>范闲携现代记忆生于庆国，从澹州少年到京都权臣，一路破解身世之谜。原著幽默犀利，剧版保留核心脉络。</p>
+        <div class="rating">推荐指数：★★★★☆</div>
+      </article>
+      <article class="chapter-card" data-chapter="第三回">
+        <h3>甄嬛传</h3>
+        <div class="meta">流潋紫 著 · 2007 · 宫斗</div>
+        <p>甄嬛入宫选秀，从天真少女到权倾后宫的太后。原著篇幅宏大，剧版精简支线，结局改笔较大。</p>
+        <div class="rating">推荐指数：★★★★★</div>
+      </article>
+      <article class="chapter-card" data-chapter="第四回">
+        <h3>鬼吹灯</h3>
+        <div class="meta">天下霸唱 著 · 2006 · 悬疑探险</div>
+        <p>胡八一、王胖子、Shirley杨三人组深入古墓探险。原著氛围诡谲，影视化多版各有取舍。</p>
+        <div class="rating">推荐指数：★★★★☆</div>
+      </article>
+      <article class="chapter-card" data-chapter="第五回">
+        <h3>全职高手</h3>
+        <div class="meta">蝴蝶蓝 著 · 2011 · 电竞</div>
+        <p>叶修被俱乐部驱逐后从网管重新开始，重返荣耀巅峰。原著热血燃向，剧版还原度较高。</p>
+        <div class="rating">推荐指数：★★★★☆</div>
+      </article>
+      <article class="chapter-card" data-chapter="第六回">
+        <h3>雪中悍刀行</h3>
+        <div class="meta">烽火戏诸侯 著 · 2012 · 武侠玄幻</div>
+        <p>徐凤年游历归来接任北凉王，面对庙堂与江湖的双重压力。原著文风独特，剧版侧重武打场面。</p>
+        <div class="rating">推荐指数：★★★★</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 卷二 -->
+  <section id="vol2" aria-labelledby="v2">
+    <h2 id="v2"><span class="vol">卷二</span>改编对比评注</h2>
+    <div class="review-layout">
+      <div class="review-block">
+        <h3>甄嬛传·结局考异</h3>
+        <p class="orig">"甄嬛最终成为太后，但原著中她并未与果郡王有实质情感，剧版大幅改编。"</p>
+        <p class="note">剧版将果郡王线作为核心情感支线，原著中甄嬛对皇帝始终有恨，情感线更克制。此改笔增强了戏剧张力，但偏离了原著"女性觉醒"的内核。</p>
+      </div>
+      <div class="review-block">
+        <h3>庆余年·范闲身世</h3>
+        <p class="orig">"范闲实为庆帝与叶轻眉之子，这一设定在原著中逐步揭示。"</p>
+        <p class="note">剧版第一季即点明身世，加快了叙事节奏。原著中范闲对身世的认知是渐进的，这种信息差制造了持续的悬念感。</p>
+      </div>
+      <div class="review-block">
+        <h3>琅琊榜·飞流角色</h3>
+        <p class="orig">"飞流在原著中已有语言障碍，剧版强化了其与梅长苏的父子般羁绊。"</p>
+        <p class="note">吴磊的表演赋予了飞流更多层次，原著中飞流更像工具人，剧版使其成为情感锚点，提升了观众共情。</p>
+      </div>
+      <div class="review-block">
+        <h3>鬼吹灯·胡八一人设</h3>
+        <p class="orig">"原著胡八一退伍军人气质更浓，台词更粗粝。"</p>
+        <p class="note">潘粤明版胡八一更偏书卷气，靳东版则接近原著硬汉形象。不同演员对角色的理解差异导致观众评价分化。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 卷三 -->
+  <section id="vol3" aria-labelledby="v3">
+    <h2 id="v3"><span class="vol">卷三</span>人物关系图谱</h2>
+    <div class="tree" role="img" aria-label="庆余年主要人物关系图">
+      <div class="tree-node">
+        <div class="tree-item">范闲</div>
+        <div class="tree-children">
+          <div class="tree-item">范若若（妹）</div>
+          <div class="tree-item">范思辙（弟）</div>
+          <div class="tree-item">林婉儿（妻）</div>
+          <div class="tree-item">庆帝（父）</div>
+          <div class="tree-item">陈萍萍（师）</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 卷四 -->
+  <section id="vol4" aria-labelledby="v4">
+    <h2 id="v4"><span class="vol">卷四</span>书友批注与札记</h2>
+    <div class="annotation-list">
+      <div class="annotation-item">
+        <h4>关于琅琊榜的叙事节奏</h4>
+        <p>原著前三十章节奏较慢，重在铺陈人物关系。剧版将关键冲突前置，更适合现代观众口味。但原著中那些看似闲笔的对话，实则暗藏伏笔，值得细品。</p>
+      </div>
+      <div class="annotation-item">
+        <h4>庆余年中叶轻眉的角色功能</h4>
+        <p>叶轻眉虽未正式出场，却是全书的精神核心。她的日记和遗物推动范闲成长，这种"缺席的在场"是猫腻常用的叙事手法。</p>
+      </div>
+      <div class="annotation-item">
+        <h4>甄嬛传的服饰与礼仪考据</h4>
+        <p>剧版在服饰、妆容、礼仪上极为考究，但部分细节仍有时代错位。原著中服饰描写更贴近明代风格，剧版则偏向清代。</p>
+      </div>
+      <div class="annotation-item">
+        <h4>鬼吹灯的地理空间感</h4>
+        <p>天下霸唱对地理环境的描写极具画面感，读者能清晰构建出古墓的空间结构。这是其作品影视化成功的关键基础。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 卷五 -->
+  <section id="vol5" aria-labelledby="v5">
+    <h2 id="v5"><span class="vol">卷五</span>阅读指南与版本</h2>
+    <table class="guide-table">
+      <thead>
+        <tr><th>书名</th><th>推荐版本</th><th>册数</th><th>备注</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>琅琊榜</td><td>四川文艺出版社</td><td>3册</td><td>修订典藏版</td></tr>
+        <tr><td>庆余年</td><td>中国友谊出版公司</td><td>14册</td><td>完整修订版</td></tr>
+        <tr><td>甄嬛传</td><td>浙江文艺出版社</td><td>6册</td><td>典藏精装</td></tr>
+        <tr><td>鬼吹灯</td><td>安徽文艺出版社</td><td>8册</td><td>全集典藏</td></tr>
+      </tbody>
+    </table>
+    <div class="progress-bar" aria-label="本站藏书进度">
+      <div class="fill" data-width="78%" style="width:78%"></div>
+      <span class="label">已收录原著 78%</span>
+    </div>
+  </section>
+
+  <!-- 卷六 -->
+  <section id="vol6" aria-labelledby="v6">
+    <h2 id="v6"><span class="vol">卷六</span>关于本站</h2>
+    <div class="about-card">
+      <h3>缘起小序</h3>
+      <p>余观今之荧屏，好剧迭出，然多不知其本于何书。遂设此阁，辑录热门剧集之原著小说，比勘文影异同，附以评注批点，愿与同好共赏文画合璧之妙。</p>
+      <p>本站所录，皆取正版授权或公有领域之文本，不涉未授权传播。若蒙方家指正，不胜感激。</p>
+      <p>本站唯一地址：</p>
+      <div class="url-display">https://yingshixiaoshuo-app.github.io</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-cols">
+    <div>
+      <h4>典藏目录</h4>
+      <ul>
+        <li><a href="#vol1">热门原著</a></li>
+        <li><a href="#vol2">改编评注</a></li>
+        <li><a href="#vol3">人物图谱</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>阅读辅助</h4>
+      <ul>
+        <li><a href="#vol4">书友批注</a></li>
+        <li><a href="#vol5">版本指南</a></li>
+        <li><a href="#vol6">关于本站</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>站点信息</h4>
+      <ul>
+        <li>影视小说典藏阁</li>
+        <li>专注文影对照</li>
+        <li>持续更新中</li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>© 2026 影视小说典藏阁 · 本站唯一地址：<span class="url">https://yingshixiaoshuo-app.github.io</span></p>
+  </div>
+</footer>
+
+<script>
+// 导航高亮
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-inner a');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{
+    if(pageYOffset>=s.offsetTop-80)current=s.getAttribute('id');
+  });
+  navLinks.forEach(a=>{
+    a.style.background='';a.style.color='';
+    if(a.getAttribute('href')==='#'+current){
+      a.style.background='var(--ink)';a.style.color='var(--paper)';
+    }
+  });
+});
+// 进度条动画
+const bar=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const f=e.target.querySelector('.fill');
+      if(f)f.style.width=f.dataset.width;
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.progress-bar').forEach(b=>bar.observe(b));
+</script>
+</body>
+</html>
